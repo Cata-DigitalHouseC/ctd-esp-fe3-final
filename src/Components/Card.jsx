@@ -1,16 +1,16 @@
-import React from "react";
+import React, {useReducer, useEffect} from "react";
 import { Link } from "react-router-dom";
 import general from '../css/general.module.css'
-
-
+import { useContextGlobal } from "./utils/global.context";
 
 const Card = ({ dentist }) => {
 
+  /*
   let favs= localStorage.getItem('favs')
-
   const addFav = ()=>{
     // Aqui iria la logica para agregar la Card en el localStorage
-    if(favs.includes({id:dentist.id}))
+    
+    if(favs.filter(fav=>fav.id==dentist.id))
     {
       alert('Ya esta en favoritos')
     } else {
@@ -22,6 +22,19 @@ const Card = ({ dentist }) => {
       }
       localStorage.setItem('favs',JSON.stringify(favs))
       alert('Dentista agregado a favoritos')
+    }
+  }
+  */
+  const {favDispatch, favState} = useContextGlobal()
+  console.log('favState es ',favState)
+  console.log('favState.filter(fav=>fav.id==1)', favState.filter(fav=>fav.id==1))
+  console.log('favState.filter(fav=>fav.id==3)', favState.filter(fav=>fav.id==3))
+  const addFav = ()=>{
+    if(favState.filter(fav=>fav.id==dentist.id).length==0){
+      favDispatch({type:'ADD_FAV',payload:dentist})
+      alert('Dentista agregado a favoritos')
+    } else {
+      alert('Ya esta en favoritos')
     }
   }
 
