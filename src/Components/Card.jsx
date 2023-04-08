@@ -4,6 +4,7 @@ import general from '../css/general.module.css'
 import { useContextGlobal } from "./utils/global.context";
 
 const Card = ({ dentist }) => {
+  const {themeState} = useContextGlobal()
 
   /*
   let favs= localStorage.getItem('favs')
@@ -39,7 +40,7 @@ const Card = ({ dentist }) => {
   }
 
   return (
-    <div className="card" style={{width:"300px",height:'500px'}}>
+    <div className={themeState.theme? 'card': 'card-dark'} style={{width:"300px",height:'500px'}}>
         {/* En cada card deberan mostrar en name - username y el id */}
         <img src="images/doctor.jpg" style={{width:"200px",height:'700px'}} alt="doctor"/>
         <p style={{fontSize:'15px', color:"#126399", textAlign:"center", fontWeight:"500"}}>{dentist.name} <br/>
@@ -47,8 +48,8 @@ const Card = ({ dentist }) => {
         {dentist.id}</p>
 
         {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-        <Link key={dentist.id} to={'/dentist/'+dentist.id}>
-            <h3 style={{color:"blue"}}>Details🔍</h3>
+        <Link className="detailDentist" key={dentist.id} to={'/dentist/'+dentist.id}>
+            <h3>Details🔍</h3>
           </Link>
 
         {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
