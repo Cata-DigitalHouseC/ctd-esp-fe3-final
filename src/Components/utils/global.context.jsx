@@ -22,11 +22,13 @@ const themes = {
 
 //Para consumir Api
 
-const initialApiState = []
+const initialApiState = {dentistList:[], dentistDetail:{}}
 const apiReducer = (state, action)=>{
   switch(action.type){
     case 'GET_DENTISTS':
-      return action.payload
+      return {dentistList: action.payload,dentistDetail:state.dentistDetail}
+    case 'GET_DENTIST':
+      return {dentistDetail: action.payload,dentistList: state.dentistList}
   }
 }
 
@@ -82,7 +84,7 @@ export const ContextProvider = ({ children }) => {
 
   
   return (
-    <ContextGlobal.Provider value={{apiState, themeState, themeDispatch, favState, favDispatch}}>
+    <ContextGlobal.Provider value={{apiState, apiDispatch,themeState, themeDispatch, favState, favDispatch}}>
       {children}
     </ContextGlobal.Provider>
   );
