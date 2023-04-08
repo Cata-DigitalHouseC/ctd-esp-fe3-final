@@ -40,12 +40,13 @@ const Card = ({ dentist }) => {
   }
 
   return (
-    <div className={themeState.theme? 'card': 'card-dark'} style={{width:"300px",height:'500px'}}>
+    <div className={themeState.theme? 'card': 'card-dark'} style={{width:"300px",height:'500px', lineHeight:"0px"}}>
         {/* En cada card deberan mostrar en name - username y el id */}
-        <img src="images/doctor.jpg" style={{width:"200px",height:'700px'}} alt="doctor"/>
-        <p style={{fontSize:'15px', color:"#126399", textAlign:"center", fontWeight:"500"}}>{dentist.name} <br/>
-        {dentist.username} <br/>
-        {dentist.id}</p>
+        <img src="images/doctor.jpg" style={{width:"200px",height:'500px'}} alt="doctor"/>
+        <p style={{fontSize:'15px', color:"#126399", textAlign:"center", fontWeight:"500", lineHeight:"5px"}}><h3>Nombre:</h3>
+        {dentist.name}
+        <h3>Username:</h3>{dentist.username}
+        <h3>Id:</h3> {dentist.id}</p>
 
         {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
         <Link className="detailDentist" key={dentist.id} to={'/dentist/'+dentist.id}>
