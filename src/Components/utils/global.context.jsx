@@ -50,6 +50,11 @@ const favReducer = (state, action) =>{
   switch(action.type){
     case 'ADD_FAV':
       return [...state,action.payload]
+    case 'DELETE_FAV':
+      console.log('DELTE_FAV ',state)
+      console.log('DELTE_FAV payload',action.payload)
+      console.log('index of payload',state.indexOf(action.payload))
+      return state.filter(item=>item!=action.payload)
     default:
       throw new Error
   }

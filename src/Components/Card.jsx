@@ -39,8 +39,17 @@ const Card = ({ dentist }) => {
     }
   }
 
+  const deleteFav=()=>{
+    if(favState.filter(fav=>fav.id==dentist.id).length==0){
+      alert('Dentista  no pertenece a favoritos')
+    } else {
+      favDispatch({type:'DELETE_FAV',payload:dentist})
+      alert('dentista eliminado de Favoritos')
+    }
+  }
+
   return (
-    <div className={themeState.theme? 'card': 'card-dark'} style={{width:"300px",height:'500px', lineHeight:"0px"}}>
+    <div className={themeState.theme? 'card': 'card-dark'} style={{width:"300px",height:'550px', lineHeight:"0px"}}>
         {/* En cada card deberan mostrar en name - username y el id */}
         <img src="images/doctor.jpg" style={{width:"200px",height:'500px'}} alt="doctor"/>
         <p style={{fontSize:'15px', color:"#126399", textAlign:"center", fontWeight:"500", lineHeight:"5px"}}><h3 className="h3NavBar">Nombre:</h3>
@@ -55,6 +64,8 @@ const Card = ({ dentist }) => {
 
         {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
         <button onClick={addFav} className="favButton">Add to Favs⭐</button>
+        <button onClick={deleteFav} className="favButton">Remove from Favs ❌</button>
+
     </div>
   );
 };
