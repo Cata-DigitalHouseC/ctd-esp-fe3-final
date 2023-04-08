@@ -39,7 +39,7 @@ const Form = () => {
           <label>Email</label>
           <input type= "email" name="email" onChange={handleChange}/>
           <br/> 
-          <button className="butForm"><h3>Enviar</h3></button>
+          <button className="butForm">Enviar</button>
         </div>
       </form>
     </div>

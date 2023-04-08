@@ -28,11 +28,11 @@ const Detail = () => {
       {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
       {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
       <div className="dentistDetail">
-        <img src="/images/doctor.jpg" style={{width:"300px",height:'400px'}} alt="doctor"/> 
-        <label><h3>Nombre:</h3> {dentist.name}</label>
-        <h3>Email:</h3> {dentist.email}
-        <h3>Telefono:</h3> {dentist.phone}
-        <h3>Sitio Web:</h3> {dentist.website}
+        <img src="/images/doctor.jpg" style={{width:"300px",height:'350px', marginTop:"30px"}} alt="doctor"/> 
+        <label><h3  className="h3NavBar">Nombre:</h3> {dentist.name}</label>
+        <h3 className="h3NavBar">Email:</h3> {dentist.email}
+        <h3 className="h3NavBar">Telefono:</h3> {dentist.phone}
+        <h3 className="h3NavBar">Sitio Web:</h3> {dentist.website}
       </div>
 
     </>
