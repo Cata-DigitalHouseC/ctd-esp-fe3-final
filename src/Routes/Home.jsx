@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
 
-  const {dentistList} = useContextGlobal()
+  const {apiState} = useContextGlobal()
 
   return (
     <main className="" >
       <h1>Home</h1>
       <div className='card-grid'>
         {/* Aqui deberias renderizar las cards */}
-        {dentistList.map(dentist=>
+        {apiState.map(dentist=>
           <Card key={dentist.id} dentist={dentist}/>
           )}
 

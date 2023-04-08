@@ -20,6 +20,16 @@ const themes = {
   }
 }
 
+//Para consumir Api
+
+const initialApiState = []
+const apiReducer = (state, action)=>{
+  switch(action.type){
+    case 'GET_DENTISTS':
+      return action.payload
+  }
+}
+
 const initialThemeState = themes.light
 const themeReducer = (state, action) =>{
   switch(action.type){
@@ -49,12 +59,13 @@ export const ContextProvider = ({ children }) => {
   //Consultar datos de la Api
 
   const [dentistList, setDentistList] = useState([])
+  const [apiState, apiDispatch] = useReducer(apiReducer, initialApiState)
   const url = 'https://jsonplaceholder.typicode.com/users'
 
   useEffect(() => {
     fetch(url)
       .then(res => res.json())
-      .then(data => setDentistList(data))
+      .then(data => apiDispatch({type:'GET_DENTISTS',payload:data}))
   }, [])
 
   //Cambiar el theme
@@ -71,7 +82,7 @@ export const ContextProvider = ({ children }) => {
 
   
   return (
-    <ContextGlobal.Provider value={{dentistList, setDentistList, themeState, themeDispatch, favState, favDispatch}}>
+    <ContextGlobal.Provider value={{apiState, themeState, themeDispatch, favState, favDispatch}}>
       {children}
     </ContextGlobal.Provider>
   );
